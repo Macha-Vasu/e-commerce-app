@@ -1,0 +1,37 @@
+#spring:
+#  application:
+#    name: config-server
+#    uri : http://localhost:8888
+
+# src/main/resources/application.yml
+# src/main/resources/application.yml
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+
+  profiles:
+    active: native   # force native backend
+
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: file:///D:/config-repo
+
+logging:
+  level:
+    org.springframework.cloud.config.server: DEBUG
+    org.eclipse.jgit: DEBUG
+
+          # search-paths: some/subfolder
+
+# remove any spring.config.import entry from this file for the config-server app
+# If you want to bypass the startup import-check instead, uncomment the following:
+# spring:
+#   cloud:
+#     config:
+#       import-check:
+#         enabled: false
